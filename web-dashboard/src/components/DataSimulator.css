@@ -1,0 +1,123 @@
+.data-simulator {
+  margin-bottom: 2rem;
+}
+
+.simulator-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.simulator-info p {
+  margin: 0 0 1rem 0;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+.simulation-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+.feature-icon {
+  font-size: 1.1rem;
+}
+
+.simulator-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.status-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  width: 100%;
+  justify-content: center;
+}
+
+.status-light {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.status-light.active {
+  background: #4CAF50;
+  box-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
+  animation: pulse-green 2s infinite;
+}
+
+.status-light.inactive {
+  background: #757575;
+}
+
+@keyframes pulse-green {
+  0% { box-shadow: 0 0 10px rgba(76, 175, 80, 0.5); }
+  50% { box-shadow: 0 0 20px rgba(76, 175, 80, 0.8); }
+  100% { box-shadow: 0 0 10px rgba(76, 175, 80, 0.5); }
+}
+
+.status-text {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.control-buttons {
+  width: 100%;
+}
+
+.control-buttons .btn {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.1rem;
+}
+
+.simulation-info-live {
+  text-align: center;
+  padding: 1rem;
+  background: rgba(76, 175, 80, 0.1);
+  border: 1px solid rgba(76, 175, 80, 0.3);
+  border-radius: 8px;
+  width: 100%;
+}
+
+.simulation-info-live p {
+  margin: 0.25rem 0;
+  font-size: 0.85rem;
+  opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+  .simulator-content {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .simulation-features {
+    grid-template-columns: 1fr;
+  }
+  
+  .simulator-controls {
+    order: -1;
+  }
+}
