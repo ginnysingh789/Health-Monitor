@@ -1,0 +1,377 @@
+.exercise-tracker-container {
+  width: 100%;
+  padding: 1rem;
+}
+
+.exercise-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.exercise-header h2 {
+  margin: 0;
+  color: var(--text-primary, #ffffff);
+}
+
+.add-exercise-btn {
+  background: var(--btn-primary-bg, linear-gradient(45deg, #4CAF50, #45a049));
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.add-exercise-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Add exercise form */
+.add-exercise-form {
+  background: var(--bg-card, rgba(255, 255, 255, 0.1));
+  backdrop-filter: var(--card-backdrop, blur(10px));
+  border: 1px solid var(--border-color, rgba(255, 255, 255, 0.2));
+  border-radius: 15px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 8px 32px var(--shadow-color, rgba(0, 0, 0, 0.1));
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary, #ffffff);
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--border-color, rgba(255, 255, 255, 0.2));
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary, #ffffff);
+  font-size: 1rem;
+}
+
+.form-group input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.form-help {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.8rem;
+  color: var(--text-secondary, rgba(255, 255, 255, 0.7));
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.form-actions {
+  margin-top: 1.5rem;
+  text-align: right;
+}
+
+.save-btn {
+  background: var(--btn-primary-bg, linear-gradient(45deg, #4CAF50, #45a049));
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.save-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Exercise tabs */
+.exercise-tabs {
+  display: flex;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border-color, rgba(255, 255, 255, 0.2));
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.exercise-tabs button {
+  background: none;
+  border: none;
+  color: var(--text-secondary, rgba(255, 255, 255, 0.7));
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  white-space: nowrap;
+}
+
+.exercise-tabs button:hover {
+  color: var(--text-primary, #ffffff);
+}
+
+.exercise-tabs button.active {
+  color: var(--text-primary, #ffffff);
+  font-weight: 600;
+}
+
+.exercise-tabs button.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--btn-primary-bg, linear-gradient(45deg, #4CAF50, #45a049));
+  border-radius: 3px 3px 0 0;
+}
+
+/* Exercise activities */
+.exercises-list {
+  margin-bottom: 2rem;
+}
+
+.exercise-item {
+  display: flex;
+  align-items: center;
+  background: var(--bg-card, rgba(255, 255, 255, 0.1));
+  backdrop-filter: var(--card-backdrop, blur(10px));
+  border: 1px solid var(--border-color, rgba(255, 255, 255, 0.2));
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  transition: all 0.3s ease;
+}
+
+.exercise-icon {
+  font-size: 2rem;
+  margin-right: 1rem;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.exercise-info {
+  flex: 1;
+}
+
+.exercise-info h4 {
+  margin: 0 0 0.25rem 0;
+  color: var(--text-primary, #ffffff);
+  font-size: 1.1rem;
+}
+
+.exercise-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  color: var(--text-secondary, rgba(255, 255, 255, 0.8));
+  font-size: 0.9rem;
+}
+
+.exercise-duration,
+.exercise-calories {
+  font-weight: 500;
+}
+
+.delete-btn {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-secondary, rgba(255, 255, 255, 0.8));
+  border: 1px solid var(--border-color, rgba(255, 255, 255, 0.2));
+  border-radius: 6px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.delete-btn:hover {
+  background: rgba(244, 67, 54, 0.2);
+  color: #f44336;
+}
+
+.no-exercises {
+  background: var(--bg-card, rgba(255, 255, 255, 0.1));
+  backdrop-filter: var(--card-backdrop, blur(10px));
+  border: 1px solid var(--border-color, rgba(255, 255, 255, 0.2));
+  border-radius: 15px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  color: var(--text-secondary, rgba(255, 255, 255, 0.8));
+}
+
+/* Exercise stats */
+.stats-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.stat-card {
+  background: var(--bg-card, rgba(255, 255, 255, 0.1));
+  backdrop-filter: var(--card-backdrop, blur(10px));
+  border: 1px solid var(--border-color, rgba(255, 255, 255, 0.2));
+  border-radius: 12px;
+  padding: 1rem;
+  text-align: center;
+}
+
+.stat-card h3 {
+  margin: 0 0 0.5rem 0;
+  color: var(--text-secondary, rgba(255, 255, 255, 0.8));
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.stat-value {
+  color: var(--text-primary, #ffffff);
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.stats-charts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.chart-container {
+  background: var(--bg-card, rgba(255, 255, 255, 0.1));
+  backdrop-filter: var(--card-backdrop, blur(10px));
+  border: 1px solid var(--border-color, rgba(255, 255, 255, 0.2));
+  border-radius: 15px;
+  padding: 1.5rem;
+  box-shadow: 0 8px 32px var(--shadow-color, rgba(0, 0, 0, 0.1));
+}
+
+.chart-container h3 {
+  margin: 0 0 1rem 0;
+  color: var(--text-primary, #ffffff);
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+.chart {
+  height: 250px;
+  position: relative;
+}
+
+/* Exercise recommendations */
+.exercise-recommendations {
+  margin-bottom: 2rem;
+}
+
+.recommendations-list {
+  margin-bottom: 1.5rem;
+}
+
+.recommendation-item {
+  display: flex;
+  align-items: flex-start;
+  background: var(--bg-card, rgba(255, 255, 255, 0.1));
+  backdrop-filter: var(--card-backdrop, blur(10px));
+  border: 1px solid var(--border-color, rgba(255, 255, 255, 0.2));
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.recommendation-icon {
+  font-size: 1.5rem;
+  margin-right: 1rem;
+}
+
+.recommendation-text {
+  color: var(--text-secondary, rgba(255, 255, 255, 0.8));
+}
+
+.no-recommendations {
+  background: var(--bg-card, rgba(255, 255, 255, 0.1));
+  backdrop-filter: var(--card-backdrop, blur(10px));
+  border: 1px solid var(--border-color, rgba(255, 255, 255, 0.2));
+  border-radius: 15px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  color: var(--text-secondary, rgba(255, 255, 255, 0.8));
+  margin-bottom: 1.5rem;
+}
+
+.exercise-tips {
+  background: var(--bg-card, rgba(255, 255, 255, 0.1));
+  backdrop-filter: var(--card-backdrop, blur(10px));
+  border: 1px solid var(--border-color, rgba(255, 255, 255, 0.2));
+  border-radius: 15px;
+  padding: 1.5rem;
+  box-shadow: 0 8px 32px var(--shadow-color, rgba(0, 0, 0, 0.1));
+}
+
+.exercise-tips h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: var(--text-primary, #ffffff);
+}
+
+.exercise-tips ul {
+  margin: 0;
+  padding-left: 1.5rem;
+  color: var(--text-secondary, rgba(255, 255, 255, 0.8));
+}
+
+.exercise-tips li {
+  margin-bottom: 0.5rem;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+  
+  .exercise-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .exercise-icon {
+    margin-bottom: 0.5rem;
+  }
+  
+  .exercise-details {
+    margin-bottom: 1rem;
+  }
+  
+  .delete-btn {
+    align-self: flex-end;
+  }
+  
+  .chart {
+    height: 200px;
+  }
+}

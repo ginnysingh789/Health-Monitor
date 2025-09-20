@@ -1,13 +1,35 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
+import './themes.css';
+import { ThemeProvider } from './contexts/ThemeContext';
+import ThemeToggle from './components/ThemeToggle';
 import HealthDashboard from './components/HealthDashboard';
 import AlertPanel from './components/AlertPanel';
 import DataSimulator from './components/DataSimulator';
+import HistoricalCharts from './components/HistoricalCharts';
+import HealthScore from './components/HealthScore';
+import MedicationReminder from './components/MedicationReminder';
+import ExerciseTracker from './components/ExerciseTracker';
+import SleepAnalysis from './components/SleepAnalysis';
+import NutritionLog from './components/NutritionLog';
 
 function App() {
   const [healthData, setHealthData] = useState(null);
   const [alerts, setAlerts] = useState([]);
   const [isSimulating, setIsSimulating] = useState(false);
+  const [activeView, setActiveView] = useState('dashboard');
+  const [historicalData, setHistoricalData] = useState([]);
+
+  // Navigation items
+  const navigationItems = [
+    { id: 'dashboard', label: 'Dashboard', icon: '📊' },
+    { id: 'historical', label: 'Historical', icon: '📈' },
+    { id: 'health-score', label: 'Health Score', icon: '💯' },
+    { id: 'medications', label: 'Medications', icon: '💊' },
+    { id: 'exercise', label: 'Exercise', icon: '🏃‍♂️' },
+    { id: 'sleep', label: 'Sleep', icon: '😴' },
+    { id: 'nutrition', label: 'Nutrition', icon: '🥗' }
+  ];
 
   // Simulate real-time data updates
   useEffect(() => {
@@ -16,6 +38,13 @@ function App() {
         // Generate simulated health data
         const newData = generateSimulatedData();
         setHealthData(newData);
+        
+        // Store historical data
+        setHistoricalData(prev => {
+          const updated = [...prev, newData];
+          // Keep only last 100 readings
+          return updated.slice(-100);
+        });
         
         // Check for alerts
         const newAlerts = checkForAlerts(newData);
@@ -121,32 +150,87 @@ function App() {
     }]);
   };
 
+  const renderActiveView = () => {
+    switch (activeView) {
+      case 'dashboard':
+        return (
+          <div className="dashboard-container">
+            <HealthDashboard data={healthData} />
+            <AlertPanel alerts={alerts} />
+          </div>
+        );
+      case 'historical':
+        return <HistoricalCharts data={historicalData} />;
+      case 'health-score':
+        return <HealthScore data={historicalData} />;
+      case 'medications':
+        return <MedicationReminder />;
+      case 'exercise':
+        return <ExerciseTracker />;
+      case 'sleep':
+        return <SleepAnalysis data={historicalData} />;
+      case 'nutrition':
+        return <NutritionLog />;
+      default:
+        return (
+          <div className="dashboard-container">
+            <HealthDashboard data={healthData} />
+            <AlertPanel alerts={alerts} />
+          </div>
+        );
+    }
+  };
+
   return (
-    <div className="App">
-      <header className="app-header">
-        <h1>🏥 Health Monitor Dashboard</h1>
-        <p className="subtitle">Educational Project - Simulated Data Only</p>
-      </header>
+    <ThemeProvider>
+      <div className="App">
+        <header className="app-header">
+          <div className="header-content">
+            <div className="header-left">
+              <h1>🏥 Health Monitor Dashboard</h1>
+              <p className="subtitle">Educational Project - Simulated Data Only</p>
+            </div>
+            <div className="header-right">
+              <ThemeToggle />
+            </div>
+          </div>
+        </header>
 
-      <main className="app-main">
-        <div className="control-panel">
-          <DataSimulator 
-            isSimulating={isSimulating}
-            onStart={startSimulation}
-            onStop={stopSimulation}
-          />
-        </div>
+        <nav className="app-navigation">
+          <div className="nav-container">
+            {navigationItems && navigationItems.map(item => (
+              <button
+                key={item.id}
+                className={`nav-item ${activeView === item.id ? 'active' : ''}`}
+                onClick={() => setActiveView(item.id)}
+                aria-pressed={activeView === item.id}
+              >
+                <span className="nav-icon" aria-hidden="true">{item.icon}</span>
+                <span className="nav-label">{item.label}</span>
+              </button>
+            ))}
+          </div>
+        </nav>
 
-        <div className="dashboard-container">
-          <HealthDashboard data={healthData} />
-          <AlertPanel alerts={alerts} />
-        </div>
-      </main>
+        <main className="app-main">
+          <div className="control-panel">
+            <DataSimulator 
+              isSimulating={isSimulating}
+              onStart={startSimulation}
+              onStop={stopSimulation}
+            />
+          </div>
 
-      <footer className="app-footer">
-        <p>⚠️ Educational Use Only - Not for Medical Diagnosis</p>
-      </footer>
-    </div>
+          <div className="content-area">
+            {renderActiveView()}
+          </div>
+        </main>
+
+        <footer className="app-footer">
+          <p>⚠️ Educational Use Only - Not for Medical Diagnosis</p>
+        </footer>
+      </div>
+    </ThemeProvider>
   );
 }
 

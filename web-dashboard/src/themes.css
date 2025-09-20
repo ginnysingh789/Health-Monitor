@@ -1,0 +1,71 @@
+/* Theme variables for Health Monitor */
+:root {
+  /* Black theme (default) */
+  --bg-primary: #000000;
+  --bg-card: rgba(40, 40, 40, 0.8);
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.7);
+  --border-color: rgba(255, 255, 255, 0.15);
+  --header-bg: rgba(20, 20, 20, 0.9);
+  --footer-bg: rgba(10, 10, 10, 0.9);
+  --shadow-color: rgba(0, 0, 0, 0.5);
+  --btn-primary-bg: linear-gradient(45deg, #00ff88, #00cc6a);
+  --btn-danger-bg: linear-gradient(45deg, #ff4757, #ff3742);
+  --status-normal: #00ff88;
+  --status-warning: #ffa502;
+  --status-critical: #ff4757;
+  --chart-grid: rgba(255, 255, 255, 0.1);
+  --card-backdrop: blur(10px);
+}
+
+[data-theme='light'] {
+  --bg-primary: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  --bg-card: rgba(255, 255, 255, 0.9);
+  --text-primary: #212529;
+  --text-secondary: rgba(33, 37, 41, 0.7);
+  --border-color: rgba(0, 0, 0, 0.125);
+  --header-bg: rgba(255, 255, 255, 0.95);
+  --footer-bg: rgba(248, 249, 250, 0.95);
+  --shadow-color: rgba(0, 0, 0, 0.15);
+  --btn-primary-bg: linear-gradient(45deg, #007bff, #0056b3);
+  --btn-danger-bg: linear-gradient(45deg, #dc3545, #c82333);
+  --status-normal: #28a745;
+  --status-warning: #ffc107;
+  --status-critical: #dc3545;
+  --chart-grid: rgba(0, 0, 0, 0.1);
+}
+
+/* Accessibility improvements */
+:focus {
+  outline: 3px solid #78b7ff;
+  outline-offset: 2px;
+}
+
+/* Skip to main content link for screen readers */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #000;
+  color: white;
+  padding: 8px;
+  z-index: 100;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* Improved contrast for better accessibility */
+.high-contrast {
+  --text-primary: #ffffff;
+  --text-secondary: #ffffff;
+  --border-color: #ffffff;
+}
+
+/* Responsive design improvements */
+@media (max-width: 768px) {
+  :root {
+    --card-backdrop: none; /* Disable backdrop filter on mobile for performance */
+  }
+}

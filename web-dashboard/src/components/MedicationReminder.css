@@ -1,0 +1,274 @@
+.medication-reminder-container {
+  width: 100%;
+  padding: 1rem;
+}
+
+.medication-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.medication-header h2 {
+  margin: 0;
+  color: var(--text-primary, #ffffff);
+}
+
+.add-med-btn {
+  background: var(--btn-primary-bg, linear-gradient(45deg, #4CAF50, #45a049));
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.add-med-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Add medication form */
+.add-medication-form {
+  background: var(--bg-card, rgba(255, 255, 255, 0.1));
+  backdrop-filter: var(--card-backdrop, blur(10px));
+  border: 1px solid var(--border-color, rgba(255, 255, 255, 0.2));
+  border-radius: 15px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 8px 32px var(--shadow-color, rgba(0, 0, 0, 0.1));
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary, #ffffff);
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--border-color, rgba(255, 255, 255, 0.2));
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary, #ffffff);
+  font-size: 1rem;
+}
+
+.form-group input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.form-actions {
+  margin-top: 1.5rem;
+  text-align: right;
+}
+
+.save-btn {
+  background: var(--btn-primary-bg, linear-gradient(45deg, #4CAF50, #45a049));
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.save-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Medications list */
+.medications-list {
+  margin-bottom: 2rem;
+}
+
+.medications-list h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: var(--text-primary, #ffffff);
+}
+
+.medication-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--bg-card, rgba(255, 255, 255, 0.1));
+  backdrop-filter: var(--card-backdrop, blur(10px));
+  border: 1px solid var(--border-color, rgba(255, 255, 255, 0.2));
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  transition: all 0.3s ease;
+}
+
+.medication-due {
+  border-color: var(--status-warning, #FF9800);
+  box-shadow: 0 0 15px rgba(255, 152, 0, 0.3);
+  animation: pulse 2s infinite;
+}
+
+.medication-taken {
+  opacity: 0.7;
+  border-color: var(--status-normal, #4CAF50);
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(255, 152, 0, 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(255, 152, 0, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 152, 0, 0); }
+}
+
+.medication-info {
+  flex: 1;
+}
+
+.medication-info h4 {
+  margin: 0 0 0.25rem 0;
+  color: var(--text-primary, #ffffff);
+  font-size: 1.1rem;
+}
+
+.medication-dosage {
+  margin: 0 0 0.5rem 0;
+  color: var(--text-secondary, rgba(255, 255, 255, 0.8));
+  font-size: 0.9rem;
+}
+
+.medication-schedule {
+  margin: 0;
+  color: var(--text-secondary, rgba(255, 255, 255, 0.8));
+  font-size: 0.9rem;
+}
+
+.schedule-label {
+  font-weight: 500;
+  margin-right: 0.25rem;
+}
+
+.schedule-time {
+  font-weight: 600;
+}
+
+.schedule-frequency {
+  margin-left: 0.5rem;
+  opacity: 0.8;
+}
+
+.medication-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.take-btn {
+  background: var(--btn-primary-bg, linear-gradient(45deg, #4CAF50, #45a049));
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.take-btn.taken {
+  background: rgba(76, 175, 80, 0.3);
+}
+
+.delete-btn {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-secondary, rgba(255, 255, 255, 0.8));
+  border: 1px solid var(--border-color, rgba(255, 255, 255, 0.2));
+  border-radius: 6px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.delete-btn:hover {
+  background: rgba(244, 67, 54, 0.2);
+  color: #f44336;
+}
+
+.no-medications {
+  background: var(--bg-card, rgba(255, 255, 255, 0.1));
+  backdrop-filter: var(--card-backdrop, blur(10px));
+  border: 1px solid var(--border-color, rgba(255, 255, 255, 0.2));
+  border-radius: 15px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  color: var(--text-secondary, rgba(255, 255, 255, 0.8));
+  margin-bottom: 2rem;
+}
+
+/* Medication tips */
+.medication-tips {
+  background: var(--bg-card, rgba(255, 255, 255, 0.1));
+  backdrop-filter: var(--card-backdrop, blur(10px));
+  border: 1px solid var(--border-color, rgba(255, 255, 255, 0.2));
+  border-radius: 15px;
+  padding: 1.5rem;
+  box-shadow: 0 8px 32px var(--shadow-color, rgba(0, 0, 0, 0.1));
+}
+
+.medication-tips h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: var(--text-primary, #ffffff);
+}
+
+.medication-tips ul {
+  margin: 0;
+  padding-left: 1.5rem;
+  color: var(--text-secondary, rgba(255, 255, 255, 0.8));
+}
+
+.medication-tips li {
+  margin-bottom: 0.5rem;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+  
+  .medication-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .medication-actions {
+    width: 100%;
+    margin-top: 1rem;
+    justify-content: flex-end;
+  }
+  
+  .take-btn {
+    flex: 1;
+  }
+}

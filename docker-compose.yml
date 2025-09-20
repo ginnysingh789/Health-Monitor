@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./data-simulator
+      dockerfile: Dockerfile
+    container_name: health-monitor-backend
+    volumes:
+      - ./data-simulator:/app/data-simulator
+      - ./firebase-config:/app/firebase-config
+
+  frontend:
+    build:
+      context: ./web-dashboard
+      dockerfile: Dockerfile
+    container_name: health-monitor-frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./web-dashboard/src:/app/src
